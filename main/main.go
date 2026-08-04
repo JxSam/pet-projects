@@ -5,6 +5,7 @@ import (
 	"sort"
 	"strings"
 
+	easyprojects "github.com/JxSam/go-bot/pet-project/easy_projects"
 	moneyconverter "github.com/JxSam/go-bot/pet-project/money_converter"
 	xlsxconverttomap "github.com/JxSam/go-bot/pet-project/xlsx_convert_to_map"
 )
@@ -14,6 +15,10 @@ func main() {
 	var projects = map[int]string{
 		1: "money_converter",
 		2: "csv_convert_to_map",
+		3: "easy_projects",
+	}
+	var easy_projects = map[int]string{
+		1: "is_even?",
 	}
 	fmt.Println("Pet-projects by JxSam aka N1kS. Select action:")
 	printMapTable(projects)
@@ -23,6 +28,14 @@ func main() {
 		moneyconverter.Convert()
 	case "2":
 		xlsxconverttomap.Convert()
+	case "3":
+		fmt.Println("Easy projects:")
+		printMapTable(easy_projects)
+		fmt.Scan(&action)
+		switch action {
+		case "1":
+			easyprojects.Even_noeven()
+		}
 	}
 }
 
