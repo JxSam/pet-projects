@@ -64,14 +64,14 @@ func Convert() {
 		fmt.Println(currency_text)
 		fmt.Println("Введите сумму в USD:")
 		fmt.Scan(&value)
-		fmt.Println("Выберите номер валюты для конвертации из списка выше:")
-		fmt.Scan(&number)
 		value_correct, err := strconv.ParseFloat(value, 64)
 		if err != nil {
 			fmt.Println("Неверное число. Повторите попытку")
-			continue
+		} else {
+			fmt.Println("Выберите номер валюты для конвертации из списка выше:")
+			fmt.Scan(&number)
+			fmt.Printf("%s USD = %f %s\n", value, value_correct*rates[currency_map[number]], currency_map[number])
 		}
-		fmt.Printf("%s USD = %f %s\n", value, value_correct*rates[currency_map[number]], currency_map[number])
 		fmt.Println("Выберите действие. Выход - 1, Далее - enter")
 		fmt.Scanln(&action)
 		if action == 1 {

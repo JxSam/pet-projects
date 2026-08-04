@@ -6,12 +6,14 @@ import (
 	"strings"
 
 	moneyconverter "github.com/JxSam/go-bot/pet-project/money_converter"
+	xlsxconverttomap "github.com/JxSam/go-bot/pet-project/xlsx_convert_to_map"
 )
 
 func main() {
 	var action string
 	var projects = map[int]string{
 		1: "money_converter",
+		2: "csv_convert_to_map",
 	}
 	fmt.Println("Pet-projects by JxSam aka N1kS. Select action:")
 	printMapTable(projects)
@@ -19,6 +21,8 @@ func main() {
 	switch action {
 	case "1":
 		moneyconverter.Convert()
+	case "2":
+		xlsxconverttomap.Convert()
 	}
 }
 
