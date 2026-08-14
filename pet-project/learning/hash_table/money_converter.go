@@ -1,4 +1,4 @@
-package moneyconverter
+package hashtable
 
 import (
 	"fmt"

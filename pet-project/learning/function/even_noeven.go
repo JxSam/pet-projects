@@ -1,4 +1,4 @@
-package easyprojects
+package function
 
 import "fmt"
 

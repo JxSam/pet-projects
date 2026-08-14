@@ -5,36 +5,36 @@ import (
 	"sort"
 	"strings"
 
-	easyprojects "github.com/JxSam/go-bot/pet-project/easy_projects"
-	moneyconverter "github.com/JxSam/go-bot/pet-project/money_converter"
+	"github.com/JxSam/go-bot/pet-project/learning/function"
+	hashtable "github.com/JxSam/go-bot/pet-project/learning/hash_table"
 	xlsxconverttomap "github.com/JxSam/go-bot/pet-project/xlsx_convert_to_map"
 )
 
 func main() {
 	var action string
 	var projects = map[int]string{
-		1: "money_converter",
-		2: "csv_convert_to_map",
-		3: "easy_projects",
+		1: "csv_convert_to_map",
+		2: "learning_projects",
 	}
-	var easy_projects = map[int]string{
-		1: "is_even?",
+	var learningProjects = map[int]string{
+		1: "function | even_noeven",
+		2: "hash_table | money converter",
 	}
 	fmt.Println("Pet-projects by JxSam aka N1kS. Select action:")
 	printMapTable(projects)
 	fmt.Scan(&action)
 	switch action {
 	case "1":
-		moneyconverter.Convert()
-	case "2":
 		xlsxconverttomap.Convert()
-	case "3":
-		fmt.Println("Easy projects:")
-		printMapTable(easy_projects)
+	case "2":
+		fmt.Println("Learnign projectss:")
+		printMapTable(learningProjects)
 		fmt.Scan(&action)
 		switch action {
 		case "1":
-			easyprojects.Even_noeven()
+			function.Even_noeven()
+		case "2":
+			hashtable.Convert()
 		}
 	}
 }
