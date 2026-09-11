@@ -6,7 +6,8 @@ import (
 	"os"
 )
 
-const start = `
+func main() {
+	start := `
 _______________
 File reader
 _______________
@@ -16,14 +17,12 @@ _______________
 2. Запись строки в файл
 `
 
-const read_file = `
+	read_file := `
 Выберите способо чтения:
 0. <Назад
 1. Построчно(пакет bufioReader)
 2. Целиком(пакет io)
 `
-
-func main() {
 	var command, level int
 	for {
 		fmt.Println(start)
@@ -41,6 +40,9 @@ func main() {
 				read_string()
 				fmt.Scanln(&command)
 			}
+		case 2:
+			write_file()
+			fmt.Scanln(&command)
 		}
 	}
 }
@@ -62,4 +64,24 @@ func read_string() {
 	for scanner.Scan() {
 		fmt.Println(scanner.Text())
 	}
+}
+
+func write_file() {
+	var text string
+	fmt.Println("Напишите текст для записи:")
+	fmt.Scanln(&text)
+	file, err := os.Create("file.txt")
+	if err != nil {
+		fmt.Println("Ошибка создания файла:", err)
+		return
+	}
+	defer file.Close()
+
+	_, err = file.WriteString(text)
+	if err != nil {
+		fmt.Println("Ошибка записи в файл:", err)
+		return
+	}
+
+	fmt.Println("Данные записаны в файл file.txt")
 }
